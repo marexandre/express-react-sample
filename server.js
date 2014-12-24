@@ -4,6 +4,7 @@ require('node-jsx').install({ harmony: true });
 
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var Server  = require('http').Server;
 var path    = require('path');
 var React   = require('react');
 var TestApp = require('./components/TestApp.react.jsx');
@@ -43,6 +44,38 @@ app.get('/', function(req, res) {
   });
 })
 
-app.listen(process.env.PORT || 3000, function() {
-  console.log('Point your browser at http://localhost:3000');
+// app.listen(process.env.PORT || 3000, function() {
+//   console.log('Point your browser at http://localhost:3000');
+// });
+
+var server = Server(app);
+var io = require('socket.io')(server);
+
+io.sockets.on('connection', function(socket) {
+  console.log('connection');
+
+  socket.on('disconnect', function(){
+    console.log('disconnect');
+  });
+});
+
+var interval = setInterval(function() {
+  var id = users.length + 1;
+  users.push({ 'id': id, 'name': 'User'+ id });
+
+  // Send data to the  client
+  io.sockets.emit('add_user', { user: users[id - 1] });
+
+  if (users.length > 15) {
+    console.log('--- clearInterval');
+    clearInterval(interval);
+  }
+}, 10 * 1000);
+
+
+
+
+var port = process.env.PORT || 3000;
+server.listen(port, function() {
+  console.log('Point your browser at http://localhost:'+ port);
 });

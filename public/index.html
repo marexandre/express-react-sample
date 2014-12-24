@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>Basic Example with JSX</title>
+    <link rel="stylesheet" href="../shared/css/base.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="countdown"></div>
+
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script type="text/jsx">
+      var Test = React.createClass({
+        render: function() {
+          var message = 'Count up';
+
+          return (
+            <h1>{message}</h1>
+          );
+        }
+      });
+
+      var Countup = React.createClass({
+        render: function() {
+          var elapsed = Math.round(this.props.elapsed  / 100);
+          var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
+          var message = seconds + ' seconds';
+
+          return (
+            <p>{message}</p>
+          );
+        }
+      });
+
+      var App = React.createClass({
+        render: function() {
+          return (
+            <Test />
+          );
+        }
+      });
+
+      React.render(<App />, document.getElementById('app'));
+
+      var start = new Date().getTime();
+
+      setInterval(function() {
+        React.render(
+          <Countup elapsed={new Date().getTime() - start} />,
+          document.getElementById('countdown')
+        );
+      }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "test-react",
+  "version": "0.0.0",
+  "description": "React test project",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "~4.10.6",
+    "express-handlebars": "~1.1.0",
+    "node-jsx": "~0.12.4",
+    "react": "~0.12.2"
+  },
+  "devDependencies": {
+    "browserify": "^7.0.3",
+    "connect-browserify": "3.2.1",
+    "gulp": "^3.8.10",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-react": "^2.0.0",
+    "nodemon": "~1.2.1",
+    "reactify": "^0.17.1",
+    "uglifyjs": "~2.3.6",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "~2.2.1"
+  },
+  "author": "",
+  "license": "MIT"
+}

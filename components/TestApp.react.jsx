@@ -7,8 +7,9 @@ var socket = require('socket.io-client')('http://localhost:3000');
 module.exports = TestApp = React.createClass({
   // Update 'state' by using the `props` that were passed on initialization
   getInitialState: function() {
-    return { users: this.props.users }
+    return { users: this.props.users };
   },
+
   componentWillMount: function() {
     // HACK: when server side rendering we don't want to add socket.io
     // related code
@@ -43,4 +44,5 @@ module.exports = TestApp = React.createClass({
       </div>
     );
   }
+
 });

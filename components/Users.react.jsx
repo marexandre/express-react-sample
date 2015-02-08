@@ -4,6 +4,7 @@ var React = require('react');
 var User = require('./User.react.jsx');
 
 module.exports = Users = React.createClass({
+
   render: function() {
     //
     var content = this.props.users.map(function(result) {
@@ -16,4 +17,5 @@ module.exports = Users = React.createClass({
       <ul className="user-list">{content}</ul>
     );
   }
+
 });

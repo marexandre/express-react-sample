@@ -3,6 +3,7 @@
 var React = require('react');
 
 module.exports = User = React.createClass({
+
   render: function() {
     var data = this.props.data;
 
@@ -10,4 +11,5 @@ module.exports = User = React.createClass({
       <li>{data.id}: {data.name}</li>
     );
   }
+  
 });

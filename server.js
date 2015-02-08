@@ -11,6 +11,7 @@ var TestApp = require('./components/TestApp.react.jsx');
 
 var users = require('./data/users.json');
 
+
 /**
  * API
  */
@@ -20,6 +21,7 @@ var api = express()
     console.log('username: '+ username);
     res.json({ message: 'hooray! welcome to our api!' });
   });
+
 
 /**
  * Web App
@@ -44,10 +46,10 @@ app.get('/', function(req, res) {
   });
 })
 
-// app.listen(process.env.PORT || 3000, function() {
-//   console.log('Point your browser at http://localhost:3000');
-// });
 
+/**
+ * socket.io
+ */
 var server = Server(app);
 var io = require('socket.io')(server);
 
@@ -71,8 +73,6 @@ var interval = setInterval(function() {
     clearInterval(interval);
   }
 }, 10 * 1000);
-
-
 
 
 var port = process.env.PORT || 3000;
